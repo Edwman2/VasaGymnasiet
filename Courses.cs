@@ -21,6 +21,7 @@ namespace VasaGymnasiet
                 Console.WriteLine("1. Show all courses");
                 Console.WriteLine("2. Show all students in a specific course");
                 Console.WriteLine("3. Show all courses and the average grade in every course");
+                Console.WriteLine("4. Show ");
                 Console.WriteLine("4. Exit");
                 Console.WriteLine("=======================================================================================");
 
@@ -104,6 +105,9 @@ namespace VasaGymnasiet
                             break;
                         // Exit
                         case "4":
+                            ExitMenu = true;
+                            Console.WriteLine("Exiting...");
+
 
                             break;
 
@@ -111,7 +115,7 @@ namespace VasaGymnasiet
                             Console.WriteLine("incorrect input");
                             break;
 
-                    }
+                    }                   
                 }
             }                         
         }

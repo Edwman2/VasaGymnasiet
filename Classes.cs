@@ -89,6 +89,42 @@ namespace VasaGymnasiet
                             Console.WriteLine("incorrect input");
                             break;
                     }
+                    Console.WriteLine("=======================================================================================");
+                    Console.WriteLine("Choose from the menu");
+                    Console.WriteLine("1. Employees");
+                    Console.WriteLine("2. Students");
+                    Console.WriteLine("3. Classes");
+                    Console.WriteLine("4. Courses");
+                    Console.WriteLine("5. Add person to the system");
+                    Console.WriteLine("=======================================================================================");
+
+                    string input1 = Console.ReadLine();
+                    Console.WriteLine("=======================================================================================");
+                    switch (input1)
+                    {
+                        case "1":
+                            Employees.GetEmployees();
+                            break;
+                        case "2":
+                            Students.GetStudents();
+                            break;
+                        case "3":
+                            Classes.GetClasses();
+                            break;
+                        case "4":
+                            Courses.GetCourses();
+                            break;
+                        case "5":
+                            Personer.AddPerson(context);
+                            break;
+
+
+
+
+                        default:
+                            Console.WriteLine("Felaktig inmatning");
+                            break;
+                    }
 
 
                 }

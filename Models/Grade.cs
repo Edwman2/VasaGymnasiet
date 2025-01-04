@@ -13,7 +13,7 @@ public partial class Grade
 
     public int FkEmployeeId { get; set; }
 
-    public string Grade1 { get; set; } = null!;
+    public int Grade1 { get; set; }
 
     public DateOnly DateAssigned { get; set; }
 

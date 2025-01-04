@@ -25,8 +25,7 @@ namespace VasaGymnasiet
                 Console.WriteLine("1. Employees");
                 Console.WriteLine("2. Students");
                 Console.WriteLine("3. Classes");
-                Console.WriteLine("4. Courses");
-                Console.WriteLine("5. Add person to the system");
+                Console.WriteLine("4. Add person to the system");
                 Console.WriteLine("=======================================================================================");
 
                 string input = Console.ReadLine();
@@ -46,11 +45,11 @@ namespace VasaGymnasiet
                         Classes.GetClasses();
                         break;
                     case "4":
-                        Courses.GetCourses();
-                        break;
-                    case "5":
                         Personer.AddPerson(context);
                         break;
+                    //case "5":
+                    //    Personer.AddPerson(context);
+                    //    break;
 
 
 

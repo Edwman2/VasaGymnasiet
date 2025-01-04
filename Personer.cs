@@ -65,6 +65,11 @@ namespace VasaGymnasiet
                 {
                     Console.WriteLine("Please state a role, teacher,janitor or principal.");
                     string staffRole = Console.ReadLine();
+                    if (staffRole != "teacher" && staffRole != "janitor" && staffRole != "principal")
+                    {
+                        Console.WriteLine("Invalid role, please try again.");
+                        return;
+                    }
                     Console.WriteLine("Please state a salary.");
                     decimal salary;
                     if (!decimal.TryParse(Console.ReadLine(), out salary))

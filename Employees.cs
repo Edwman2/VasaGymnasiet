@@ -85,7 +85,7 @@ namespace VasaGymnasiet
                         case "3":
 
 
-                            
+
                             var teachers = context.Employees.Where(e => e.StaffRole == "Teacher")
                                 .Select(e => new
                                 {
