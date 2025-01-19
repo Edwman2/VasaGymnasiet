@@ -10,7 +10,7 @@ namespace VasaGymnasiet
 {
     public class Personer
     {
-        public static void AddPerson(VasagymnasietContext context)
+        public static void AddPerson(Data.VasagymnasietContext context)
         {
 
             Console.WriteLine("Enter firstname:");

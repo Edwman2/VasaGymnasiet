@@ -13,6 +13,10 @@ public partial class Employee
 
     public decimal Salary { get; set; }
 
+    public DateOnly EmploymentDate { get; set; }
+
+    public string? Department { get; set; }
+
     public virtual ICollection<Course> Courses { get; set; } = new List<Course>();
 
     public virtual Person FkPerson { get; set; } = null!;

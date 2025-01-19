@@ -24,13 +24,14 @@ namespace VasaGymnasiet
                 Console.WriteLine("3. Show all students in a specific course");
                 Console.WriteLine("4. Show all courses and the average grade in every course");
                 Console.WriteLine("5. Show grades from the last month");
-                Console.WriteLine("6. Exit");
+                Console.WriteLine("6. Show active courses");
+                Console.WriteLine("7. Exit");
                 Console.WriteLine("=======================================================================================");
 
 
                 string input = Console.ReadLine();
 
-                using (var context = new VasagymnasietContext())
+                using (var context = new Data.VasagymnasietContext())
                 {
                     switch (input)
                     {
@@ -174,22 +175,59 @@ namespace VasaGymnasiet
                                     StudentName = g.FkStudent.FkPerson.Name,
                                     StudentLastName = g.FkStudent.FkPerson.LastName,
                                     Grade = g.Grade1,
+                                    Teacher = g.FkEmployee.FkPerson.Name,
                                     Date = g.DateAssigned
                                 });
                             Console.WriteLine("Grades from the last month");
                             Console.WriteLine("=======================================================================================");
                             foreach (var grade in grades)
                             {
-                                Console.WriteLine($"|Course: {grade.CourseName}| |Student: {grade.StudentName} {grade.StudentLastName}| |Grade: {grade.Grade}| |Date: {grade.Date}|");
+                                Console.WriteLine($"|Course: {grade.CourseName}| |Student: {grade.StudentName} {grade.StudentLastName}| |Grade: {grade.Grade}| Teacher: {grade.Teacher}| |Date: {grade.Date}|");
                             }
                             Console.WriteLine("=======================================================================================");
                             Console.WriteLine("Click enter to go back to menu");
                             Console.ReadLine();
                             break;
 
+                        case "6":
+                            var activeCourses = context.Grades
+                            .Where(g => g.Status)
+                            .Join(context.Students,
+                            grade => grade.FkStudentId,
+                           student => student.StudentId,
+                           (grade, student) => new
+                           {
+                               grade.FkCourseId,
+                               student.FkPersonId
+                           })
+                            .Join(context.Persons,
+                            student => student.FkPersonId,
+                            person => person.PersonId,
+                            (student, person) => new
+                            {
+                                CourseID = student.FkCourseId,
+                                StudenttName = person.Name + " " + person.LastName
+                            })
+                            .ToList();
+
+                            if (activeCourses.Count == 0)
+                            {
+                                Console.WriteLine("No active courses");
+                            }
+                            else
+                            {
+                                foreach (var c in activeCourses)
+                                {
+                                    Console.WriteLine($"CourseID: {c.CourseID}, Student Name: {c.StudenttName}");
+                                }
+                            }
+                            Console.WriteLine("Click enter to go back to menu");
+                            Console.ReadLine();
+                            break;
+
 
                         // Exit
-                        case "6":
+                        case "7":
                             ExitMenu = true;
                             Console.WriteLine("Exiting...");
 

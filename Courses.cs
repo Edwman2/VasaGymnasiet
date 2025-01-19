@@ -21,13 +21,13 @@ namespace VasaGymnasiet
                 Console.WriteLine("1. Show all courses");
                 Console.WriteLine("2. Show all students in a specific course");
                 Console.WriteLine("3. Show all courses and the average grade in every course");
-                Console.WriteLine("4. Show ");
-                Console.WriteLine("4. Exit");
+                Console.WriteLine("4. Active courses");
+                Console.WriteLine("5. Exit");
                 Console.WriteLine("=======================================================================================");
 
                 string input = Console.ReadLine();
 
-                using (var context = new VasagymnasietContext())
+                using (var context = new Data.VasagymnasietContext())
                 {
                     switch (input)
                     {
@@ -103,8 +103,10 @@ namespace VasaGymnasiet
                             Console.WriteLine("Click enter to go back to menu");
                             Console.ReadLine();
                             break;
+                            
+
                         // Exit
-                        case "4":
+                        case "5":
                             ExitMenu = true;
                             Console.WriteLine("Exiting...");
 

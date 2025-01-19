@@ -17,7 +17,7 @@ namespace VasaGymnasiet
 |                                  |___/                                           |
 |__________________________________________________________________________________|
 ");
-            using (var context = new VasagymnasietContext())
+            using (var context = new Data.VasagymnasietContext())
             {
                 // main menu to navigate through the system
                 Console.WriteLine("=======================================================================================");

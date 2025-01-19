@@ -13,9 +13,11 @@ public partial class Grade
 
     public int FkEmployeeId { get; set; }
 
-    public int Grade1 { get; set; }
-
     public DateOnly DateAssigned { get; set; }
+
+    public int? Grade1 { get; set; }
+
+    public bool Status { get; set; }
 
     public virtual Course FkCourse { get; set; } = null!;
 

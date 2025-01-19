@@ -22,7 +22,8 @@ namespace VasaGymnasiet
                 Console.WriteLine("2. Principal");
                 Console.WriteLine("3. Teachers");
                 Console.WriteLine("4. Janitors");
-                Console.WriteLine("5. Exit");
+                Console.WriteLine("5 Quantity per department");
+                Console.WriteLine("6. Exit");
                 
 
 
@@ -126,7 +127,24 @@ namespace VasaGymnasiet
                             Console.ReadLine();
 
                             break;
-                        case "5":
+                            case "5":
+                                var quantity = context.Employees
+                                .GroupBy(e => e.Department)
+                                .Select(e => new
+                                {
+                                    Department = e.Key,
+                                    Quantity = e.Count()
+                                });
+
+                            foreach (var q in quantity)
+                            {
+                                Console.WriteLine($"Department: {q.Department} | Quantity: {q.Quantity}");
+                            }
+                            Console.WriteLine("Click enter to go back to the menu");
+                            Console.ReadLine();
+                            break;
+
+                        case "6":
                             ExitMenu = true;
                             Console.WriteLine("Exiting...");
                             break;
